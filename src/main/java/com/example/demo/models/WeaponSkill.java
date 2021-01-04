@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import enums.SkillKey;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
@@ -20,6 +21,7 @@ import javax.validation.constraints.PositiveOrZero;
 @Table(name = "weaponSkill")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class WeaponSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,19 +56,18 @@ public class WeaponSkill {
     /**
      * The key used with the kill
      */
-    private SkillKey key;
+    private SkillKey key = SkillKey.D;
 
     /**
      * The icon of the skill
      */
-    private String skillIcon;
+    private String weaponSkillIcon;
 
-    public WeaponSkill(Weapon weapon, String name, Integer energyPoint, Double cooldown, String skillIcon) {
+    public WeaponSkill(Weapon weapon, String name, Integer energyPoint, Double cooldown, String weaponSkillIcon) {
         this.weapon = weapon;
         this.name = name;
         this.energyPoint = energyPoint;
         this.cooldown = cooldown;
-        this.key = SkillKey.D;
-        this.skillIcon = skillIcon;
+        this.weaponSkillIcon = weaponSkillIcon;
     }
 }

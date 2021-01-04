@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.repository.CharacterRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.Optional;
  * @project demo
  */
 @Service
+@Slf4j
 public class CharacterService {
 
     @Autowired
@@ -29,24 +31,37 @@ public class CharacterService {
      */
     public ResponseEntity<Character> create(Character character) {
         // If entry doesn't exist
-        if (entryExists(character.getName()))
+        if (entryExists(character.getName())) {
+            log.info("A character with name "+character.getName()+" already exists!");
             return new ResponseEntity<>(HttpStatus.IM_USED);
+        }
 
         characterRepository.save(character);
+        log.info("Character "+character.getName()+" was created successfully!");
         return new ResponseEntity<>(character, HttpStatus.CREATED);
     }
 
     /**
      * Updates the character
-     * @param character The character to be updated
+     * @param charId The character id to be updated
      * @return {@code HttpStatus.OK} if character is updated | {@code HttpStatus.NOT_FOUND} if it isn't
      */
-    public ResponseEntity<Character> update(Character character) {
-        Optional<Character> oldCharacter = characterRepository.findById(character.getId());
-        if (oldCharacter.isPresent()){
-            characterRepository.save(character);
-            return new ResponseEntity<>(character, HttpStatus.OK);
+    public ResponseEntity<Character> update(long charId, Character reqBodyCharacter) {
+        Optional<Character> optCharacter = characterRepository.findById(charId);
+
+        if (optCharacter.isPresent()){
+            Character oldCharacter = optCharacter.get();
+            oldCharacter.setId(charId);
+            oldCharacter.setName(reqBodyCharacter.getName());
+            oldCharacter.setSkills(reqBodyCharacter.getSkills());
+            oldCharacter.setWeapons(reqBodyCharacter.getWeapons());
+            oldCharacter.setStats(reqBodyCharacter.getStats());
+
+            characterRepository.save(oldCharacter);
+            log.info("Character "+optCharacter.get().getName()+" was updated successfully!");
+            return new ResponseEntity<>(reqBodyCharacter, HttpStatus.OK);
         } else {
+            log.warn("Character was not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -56,13 +71,15 @@ public class CharacterService {
      * @param charId The id of the character to be deleted
      */
     public ResponseEntity<Character> delete(long charId) {
-        Optional<Character> character = characterRepository.findById(charId);
-        if(character.isPresent()){
-            characterRepository.delete(character.get());
+        Optional<Character> optCharacter = characterRepository.findById(charId);
+        if(optCharacter.isPresent()){
+            characterRepository.delete(optCharacter.get());
+            log.info("Character "+optCharacter.get().getName()+" was deleted successfully!");
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else
+        } else {
+            log.warn("Character was not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     /**

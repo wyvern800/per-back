@@ -59,8 +59,8 @@ public class SkillController {
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
     @RequestMapping(value = "/characters/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Skill> put(@PathVariable(value = "id") long charId, @RequestBody Skill newSkill) {
-        return skillService.update(charId, newSkill);
+    public ResponseEntity<Skill> put(@PathVariable(value = "id") long charId, @RequestParam long skillId, @RequestBody Skill newSkill) {
+        return skillService.update(charId, skillId, newSkill);
     }
 
     /**

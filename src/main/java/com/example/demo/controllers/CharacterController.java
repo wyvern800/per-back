@@ -47,7 +47,7 @@ public class CharacterController {
      */
     @RequestMapping(value = "/characters/{id}", method =  RequestMethod.PUT)
     public ResponseEntity<Character> put(@PathVariable(value = "id") long id, @RequestBody Character newCharacter) {
-        return characterService.update(newCharacter);
+        return characterService.update(id, newCharacter);
     }
 
     /**
