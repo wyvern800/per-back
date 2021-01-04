@@ -5,15 +5,16 @@ import com.example.demo.models.Stat;
 import com.example.demo.models.Weapon;
 import com.example.demo.models.WeaponSkill;
 import com.example.demo.repository.CharacterRepository;
-import enums.Difficulty;
-import enums.SkillKey;
+import enums.Difficulties;
+import enums.SkillKeys;
+import enums.Tiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.example.demo.models.Character;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,24 +35,31 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        List<Weapon> weaponList = new ArrayList<>();
-        List<Skill> theSkills = new ArrayList<>();
+        // Create the lists
+        List<Weapon> weaponsList = new ArrayList<>();
+        List<Skill> skillsList = new ArrayList<>();
 
-        Character theCharacter = new Character("Jackie", weaponList, theSkills, null);
+        // Create the character
+        Character theCharacter = new Character("Jackie", weaponsList, skillsList, null, null, null, null, Tiers.A);
 
-        Weapon theWeapon = new Weapon(theCharacter, "Arroba", Difficulty.EASY, 10, 0, 0, 0, 0, "", null);
+        // Create the weapon to the character
+        Weapon adaga = new Weapon(theCharacter, "Adaga", Difficulties.NORMAL, 4, 1, 4, 1, 1, "", null);
 
-        WeaponSkill theWeaponSkill = new WeaponSkill(theWeapon, "Fakinha", 10, 10.0, "");
-        theWeapon.setWeaponSkill(theWeaponSkill);
+        // Set the weapon skill
+        WeaponSkill theWeaponSkill = new WeaponSkill(adaga, "Disfarçar e Esfaquear", 0, 40.0, "https://i.imgur.com/UNrQRJQ.png");
+        adaga.setWeaponSkill(theWeaponSkill);
 
-        theCharacter.setStats(new Stat(theCharacter, 10, 10 , 10, 10));
+        // Set the stats
+        theCharacter.setStats(new Stat(theCharacter, 560, 430 , 37, 26));
 
-        Skill theSkill = new Skill(theCharacter, "Fogo", 10, 10.0, SkillKey.Q, "");
-        Skill theSkill2 = new Skill(theCharacter, "Barrigada", 10, 10.0, SkillKey.Q, "");
+        // Create the skills
+        Skill theSkill = new Skill(theCharacter, "Cortar e Dilacerar", 50, 10.0, SkillKeys.Q, "https://i.imgur.com/guE79Ui.png", "#");
 
-        theSkills.addAll(Arrays.asList(theSkill, theSkill2));
+        // Add the skills to the skills List
+        skillsList.addAll(Collections.singletonList(theSkill));
 
-        weaponList.add(theWeapon);
+        // Add the weapons to the weapons list
+        weaponsList.add(adaga);
 
         this.characterRepository.save(theCharacter);
     }

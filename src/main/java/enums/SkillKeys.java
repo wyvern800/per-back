@@ -7,6 +7,6 @@ package enums;
  * @created 01/01/2021 - 18:06
  * @project demo
  */
-public enum SkillKey {
+public enum SkillKeys {
     Q, W, E, R, PASSIVE, D
 }

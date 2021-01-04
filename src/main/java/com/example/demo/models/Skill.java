@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import enums.SkillKey;
+import enums.SkillKeys;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -59,12 +59,17 @@ public class Skill {
     /**
      * The key used with the kill
      */
-    private SkillKey key;
+    private SkillKeys key;
 
     /**
      * The icon of the skill
      */
     private String skillIcon;
+
+    /**
+     * The gif for each skill
+     */
+    private String skillGif;
 
     /**
      * Constructor
@@ -74,13 +79,14 @@ public class Skill {
      * @param key The key bound to this skill
      * @param skillIcon The skill icon URL
      */
-    public Skill(Character character, String name, Integer energyPoint, Double cooldown, SkillKey key, String skillIcon) {
+    public Skill(Character character, String name, Integer energyPoint, Double cooldown, SkillKeys key, String skillIcon, String skillGif) {
         this.character = character;
         this.name = name;
         this.energyPoint = energyPoint;
         this.cooldown = cooldown;
         this.key = key;
         this.skillIcon = skillIcon;
+        this.skillGif = skillGif;
     }
 }
 

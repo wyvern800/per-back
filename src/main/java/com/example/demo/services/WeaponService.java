@@ -1,13 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Character;
-import com.example.demo.models.Skill;
 import com.example.demo.models.Weapon;
-import com.example.demo.models.WeaponSkill;
 import com.example.demo.repository.CharacterRepository;
-import com.example.demo.repository.SkillRepository;
 import com.example.demo.repository.WeaponRepository;
-import enums.Difficulty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

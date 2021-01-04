@@ -7,6 +7,6 @@ package enums;
  * @created 01/01/2021 - 18:28
  * @project demo
  */
-public enum Difficulty {
+public enum Difficulties {
     EASY, NORMAL, HARD
 }

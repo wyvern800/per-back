@@ -1,7 +1,7 @@
 package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import enums.Difficulty;
+import enums.Difficulties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
-import java.util.Objects;
 
 /**
  * objects
@@ -44,7 +43,7 @@ public class Weapon {
     /**
      * Difficulty
      */
-    private Difficulty difficulty;
+    private Difficulties difficulty;
 
     /**
      * Damage stat
@@ -87,7 +86,7 @@ public class Weapon {
     @OneToOne(cascade = CascadeType.ALL)
     private WeaponSkill weaponSkill;
 
-    public Weapon(Character character, String name, Difficulty difficulty, Integer damage, Integer support, Integer movement, Integer crowdControl, Integer defense, String icon, WeaponSkill weaponSkill) {
+    public Weapon(Character character, String name, Difficulties difficulty, Integer damage, Integer support, Integer movement, Integer crowdControl, Integer defense, String icon, WeaponSkill weaponSkill) {
         this.character = character;
         this.name = name;
         this.difficulty = difficulty;

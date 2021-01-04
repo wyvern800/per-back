@@ -79,7 +79,7 @@ public class SkillService {
                 return new ResponseEntity<>(HttpStatus.IM_USED);
             }
 
-            Skill skillToBeAdded = new Skill(optChar.get(), skill.getName(), skill.getEnergyPoint(), skill.getCooldown(), skill.getKey(), skill.getSkillIcon());
+            Skill skillToBeAdded = new Skill(optChar.get(), skill.getName(), skill.getEnergyPoint(), skill.getCooldown(), skill.getKey(), skill.getSkillIcon(), skill.getSkillGif());
             skillRepository.save(skillToBeAdded);
 
             log.info("Skill "+skillToBeAdded.getName()+" was created successfully!");
@@ -115,6 +115,7 @@ public class SkillService {
                 oldSkill.setCooldown(reqBodySkill.getCooldown());
                 oldSkill.setEnergyPoint(reqBodySkill.getEnergyPoint());
                 oldSkill.setKey(reqBodySkill.getKey());
+                oldSkill.setSkillGif(reqBodySkill.getSkillGif());
                 skillRepository.save(reqBodySkill);
                 log.info("Skill was updated successfully.");
                 return new ResponseEntity<>(reqBodySkill, HttpStatus.OK);

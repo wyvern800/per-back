@@ -1,8 +1,7 @@
 package com.example.demo.models;
 
-import enums.SkillKey;
+import enums.SkillKeys;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
@@ -21,7 +20,6 @@ import javax.validation.constraints.PositiveOrZero;
 @Table(name = "weaponSkill")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class WeaponSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +54,7 @@ public class WeaponSkill {
     /**
      * The key used with the kill
      */
-    private SkillKey key = SkillKey.D;
+    private SkillKeys key = SkillKeys.D;
 
     /**
      * The icon of the skill

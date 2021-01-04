@@ -1,4 +1,5 @@
 package com.example.demo.models;
+import enums.Tiers;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,6 +29,16 @@ public class Character {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private String characterIcon;
+
+    @NotBlank(message = "Name cannot be blank")
+    private String characterLargeIcon;
+
+    @NotBlank(message = "Name cannot be blank")
+    private String lobbyVideo;
+
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL)
     private List<Weapon> weapons;
 
@@ -37,10 +48,17 @@ public class Character {
     @OneToOne(cascade = CascadeType.ALL)
     private Stat stats;
 
-    public Character(String name, List<Weapon> weapons, List<Skill> skills, Stat stats) {
+    @NotNull(message = "Name cannot be null")
+    private Tiers characterTier;
+
+    public Character(String name, List<Weapon> weapons, List<Skill> skills, Stat stats, String characterIcon, String characterLargeIcon, String lobbyVideo, Tiers characterTier) {
         this.name = name;
         this.weapons = weapons;
         this.skills = skills;
         this.stats = stats;
+        this.characterIcon = characterIcon;
+        this.characterLargeIcon = characterLargeIcon;
+        this.lobbyVideo = lobbyVideo;
+        this.characterTier = characterTier;
     }
 }

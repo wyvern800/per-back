@@ -56,7 +56,10 @@ public class CharacterService {
             oldCharacter.setSkills(reqBodyCharacter.getSkills());
             oldCharacter.setWeapons(reqBodyCharacter.getWeapons());
             oldCharacter.setStats(reqBodyCharacter.getStats());
-
+            oldCharacter.setCharacterIcon(reqBodyCharacter.getCharacterIcon());
+            oldCharacter.setCharacterLargeIcon(reqBodyCharacter.getCharacterLargeIcon());
+            oldCharacter.setLobbyVideo(reqBodyCharacter.getLobbyVideo());
+            oldCharacter.setCharacterTier(reqBodyCharacter.getCharacterTier());
             characterRepository.save(oldCharacter);
             log.info("Character "+optCharacter.get().getName()+" was updated successfully!");
             return new ResponseEntity<>(reqBodyCharacter, HttpStatus.OK);
