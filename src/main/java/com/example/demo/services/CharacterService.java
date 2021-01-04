@@ -102,6 +102,21 @@ public class CharacterService {
     }
 
     /**
+     * Gets the character info absed on id
+     * @param charId The character id
+     * @return The character id
+     */
+    public ResponseEntity<Character> findCharacterById(long charId) {
+        Optional<Character> optCharacter = characterRepository.findById(charId);
+        if(optCharacter.isPresent()){
+            return new ResponseEntity<>(optCharacter.get(), HttpStatus.OK);
+        } else {
+            log.warn("Character was not found!");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
      * Find all entries
      * @param id The id
      * @return The optional in case it finds any

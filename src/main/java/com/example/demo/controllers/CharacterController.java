@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Character;
+import com.example.demo.models.Skill;
 import com.example.demo.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,16 @@ public class CharacterController {
     @RequestMapping(method = RequestMethod.GET, path = "/characters")
     public List<Character> get() {
         return characterService.listAll();
+    }
+
+    /**
+     * Represents the {@code GET} request
+     * @param charId The id to be shown
+     * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
+     */
+    @RequestMapping(value = "/characters/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Character> getCharInfo(@RequestParam long charId) {
+        return characterService.findCharacterById(charId);
     }
 
     /**
