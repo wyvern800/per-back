@@ -16,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(path = "/weapons")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class WeaponController {
     @Autowired
     WeaponService weaponService;

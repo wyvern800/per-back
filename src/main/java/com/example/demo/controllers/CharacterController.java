@@ -15,6 +15,7 @@ import java.util.List;
  * @project demo
  */
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CharacterController {
     @Autowired
     CharacterService characterService;

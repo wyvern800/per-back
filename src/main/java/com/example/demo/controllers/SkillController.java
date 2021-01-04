@@ -16,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(path = "/skills")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SkillController {
     @Autowired
     SkillService skillService;
