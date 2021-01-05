@@ -36,7 +36,7 @@ public class CharacterController {
      * @param charId The id to be shown
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
-    @RequestMapping(value = "/characters/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/characters", method = RequestMethod.GET)
     public ResponseEntity<Character> getCharInfo(@RequestParam long charId) {
         return characterService.findCharacterById(charId);
     }
