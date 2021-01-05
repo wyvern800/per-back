@@ -33,7 +33,7 @@ public class CharacterController {
 
     /**
      * Represents the {@code GET} request
-     * @param charId The id to be shown
+     * @param slug The slug
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
     @RequestMapping(value = "/characters/i", method = RequestMethod.GET)

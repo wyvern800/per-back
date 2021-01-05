@@ -1,4 +1,3 @@
-/*
 package com.example.demo;
 
 import com.example.demo.models.Skill;
@@ -18,14 +17,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-*/
-/**
- * com.example.demo
+
+ /* com.example.demo
  *
  * @author wyvern800 - http://github.com/wyvern800
  * @created 01/01/2021 - 23:17
- * @project demo
- *//*
+ * @project demo*/
+
 
 @Component
 public class DatabaseLoader implements CommandLineRunner {
@@ -67,4 +65,3 @@ public class DatabaseLoader implements CommandLineRunner {
         this.characterRepository.save(theCharacter);
     }
 }
-*/
