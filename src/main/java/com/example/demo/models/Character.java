@@ -2,6 +2,7 @@ package com.example.demo.models;
 import enums.Tiers;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import utils.Slugfier;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -29,6 +30,10 @@ public class Character {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
+    @NotNull(message = "Slug cannot be null")
+    @NotBlank(message = "Slug cannot be blank")
+    private String slug;
+
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "Name cannot be blank")
     private String characterIcon;
@@ -53,6 +58,7 @@ public class Character {
 
     public Character(String name, List<Weapon> weapons, List<Skill> skills, Stat stats, String characterIcon, String characterLargeIcon, String lobbyVideo, Tiers characterTier) {
         this.name = name;
+        this.slug = Slugfier.makeSlug(name);
         this.weapons = weapons;
         this.skills = skills;
         this.stats = stats;

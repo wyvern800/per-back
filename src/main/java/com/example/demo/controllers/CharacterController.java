@@ -37,8 +37,8 @@ public class CharacterController {
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
     @RequestMapping(value = "/characters/i", method = RequestMethod.GET)
-    public ResponseEntity<Character> getCharInfo(@RequestParam long charId) {
-        return characterService.findCharacterById(charId);
+    public ResponseEntity<Character> getCharInfo(@RequestParam String slug) {
+        return characterService.findCharacterBySlug(slug);
     }
 
     /**

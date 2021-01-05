@@ -53,6 +53,7 @@ public class CharacterService {
             Character oldCharacter = optCharacter.get();
             oldCharacter.setId(charId);
             oldCharacter.setName(reqBodyCharacter.getName());
+            //oldCharacter.setSlug(reqBodyCharacter.getSlug());
             oldCharacter.setSkills(reqBodyCharacter.getSkills());
             oldCharacter.setWeapons(reqBodyCharacter.getWeapons());
             oldCharacter.setStats(reqBodyCharacter.getStats());
@@ -110,6 +111,22 @@ public class CharacterService {
         Optional<Character> optCharacter = characterRepository.findById(charId);
         if(optCharacter.isPresent()){
             return new ResponseEntity<>(optCharacter.get(), HttpStatus.OK);
+        } else {
+            log.warn("Character was not found!");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Gets the character info based on slug
+     * @param slug The slug
+     * @return The character object
+     */
+    public ResponseEntity<Character> findCharacterBySlug(String slug) {
+        List<Character> lists = characterRepository.findAll();
+        Optional<Character> optChar = lists.stream().filter(p-> p.getSlug().equals(slug)).findFirst();
+        if(optChar.isPresent()){
+            return new ResponseEntity<>(optChar.get(), HttpStatus.OK);
         } else {
             log.warn("Character was not found!");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
