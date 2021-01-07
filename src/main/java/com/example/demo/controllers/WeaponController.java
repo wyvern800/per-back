@@ -37,7 +37,7 @@ public class WeaponController {
      * @return The list of all weapons of a determined character
      */
     @GetMapping
-    @RequestMapping(method = RequestMethod.GET, path = "/weapons/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/view/{id}")
     public List<Weapon> get(@PathVariable(value = "id") long charId) {
         return weaponService.findWeaponsByCharId(charId);
     }
@@ -48,7 +48,7 @@ public class WeaponController {
      * @param newWeapon The new weapon from the request present on the request body (format: {@code JSON})
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
-    @RequestMapping(value = "/characters/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/{id}", method = RequestMethod.POST)
     public ResponseEntity<Weapon> post(@PathVariable(value = "id") long charId, @RequestBody Weapon newWeapon) {
         return weaponService.create(charId, newWeapon);
     }
@@ -59,7 +59,7 @@ public class WeaponController {
      * @param newWeapon The new weapon from the request present on the request body (format: {@code JSON})
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
-    @RequestMapping(value = "/weapons/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Weapon> put(@PathVariable(value = "id") long charId, @RequestParam long weaponId, @RequestBody Weapon newWeapon) {
         return weaponService.update(charId, weaponId, newWeapon);
     }
@@ -70,7 +70,7 @@ public class WeaponController {
      * @param weaponId The id of the weapon
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
-    @RequestMapping(value = "/characters/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Weapon> delete(@PathVariable(value = "id") long charId, @RequestParam long weaponId) {
         return weaponService.delete(charId, weaponId);
     }
