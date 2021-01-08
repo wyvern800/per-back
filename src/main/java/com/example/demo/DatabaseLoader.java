@@ -1,31 +1,25 @@
-/*
 package com.example.demo;
 
-import com.example.demo.models.Skill;
-import com.example.demo.models.Stat;
-import com.example.demo.models.Weapon;
-import com.example.demo.models.WeaponSkill;
+import com.example.demo.models.*;
+import com.example.demo.models.Character;
 import com.example.demo.repository.CharacterRepository;
 import enums.Difficulties;
+import enums.Locations;
 import enums.SkillKeys;
 import enums.Tiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.example.demo.models.Character;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.*;
 
-
- */
 /* com.example.demo
  *
  * @author wyvern800 - http://github.com/wyvern800
  * @created 01/01/2021 - 23:17
- * @project demo*//*
-
+ * @project demo*/
 
 
 @Component
@@ -47,7 +41,7 @@ public class DatabaseLoader implements CommandLineRunner {
         Character theCharacter = new Character("Jackie", weaponsList, skillsList, null, null, null, null, Tiers.A);
 
         // Create the weapon to the character
-        Weapon adaga = new Weapon(theCharacter, "Adaga", Difficulties.NORMAL, 4, 1, 4, 1, 1, "", null);
+        Weapon adaga = new Weapon(theCharacter, "Adaga", Difficulties.NORMAL, 4, 1, 4, 1, 1, "", null, null);
 
         // Set the weapon skill
         WeaponSkill theWeaponSkill = new WeaponSkill(adaga, "Disfarçar e Esfaquear", 0, 40.0, "https://i.imgur.com/UNrQRJQ.png");
@@ -65,7 +59,23 @@ public class DatabaseLoader implements CommandLineRunner {
         // Add the weapons to the weapons list
         weaponsList.add(adaga);
 
+        Locations avenida = Locations.AVENIDA;
+
+        Location location = new Location(avenida.getName(), avenida.getPos(), avenida.getTop(), avenida.getLeft(), null);
+
+        List<Location> locsSet = new ArrayList<>();
+
+        locsSet.add(location);
+
+        Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", locsSet, adaga);
+
+        List<Build> builds = new ArrayList<>();
+
+        location.setBuild(theBuild);
+        builds.add(theBuild);
+
+        adaga.setBuilds(builds);
+
         this.characterRepository.save(theCharacter);
     }
 }
-*/

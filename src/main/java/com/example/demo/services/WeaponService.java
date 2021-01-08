@@ -49,7 +49,7 @@ public class WeaponService {
             Character theCharacter = optChar.get();
             Weapon weaponToBeAdded = new Weapon(theCharacter, reqBodyWeapon.getName(),
                     reqBodyWeapon.getDifficulty(), reqBodyWeapon.getDamage(), reqBodyWeapon.getSupport(), reqBodyWeapon.getMovement(),
-                    reqBodyWeapon.getCrowdControl(), reqBodyWeapon.getDefense(), reqBodyWeapon.getIcon(), reqBodyWeapon.getWeaponSkill());
+                    reqBodyWeapon.getCrowdControl(), reqBodyWeapon.getDefense(), reqBodyWeapon.getIcon(), reqBodyWeapon.getWeaponSkill(), reqBodyWeapon.getBuilds());
             weaponRepository.save(weaponToBeAdded);
             log.info("Weapon "+optChar.get().getName()+" was created successfully!");
             return new ResponseEntity<>(reqBodyWeapon, HttpStatus.CREATED);
@@ -82,6 +82,7 @@ public class WeaponService {
                 oldWeapon.setDefense(reqBodyWeapon.getDefense());
                 oldWeapon.setIcon(reqBodyWeapon.getIcon());
                 oldWeapon.setWeaponSkill(reqBodyWeapon.getWeaponSkill());
+                oldWeapon.setBuilds(reqBodyWeapon.getBuilds());
                 weaponRepository.save(oldWeapon);
                 log.info("Weapon "+optWeapon.get().getName()+" was updated successfully!");
                 return new ResponseEntity<>(reqBodyWeapon, HttpStatus.OK);

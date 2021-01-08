@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.List;
+import java.util.Set;
 
 /**
  * objects
@@ -86,7 +88,12 @@ public class Weapon {
     @OneToOne(cascade = CascadeType.ALL)
     private WeaponSkill weaponSkill;
 
-    public Weapon(Character character, String name, Difficulties difficulty, Integer damage, Integer support, Integer movement, Integer crowdControl, Integer defense, String icon, WeaponSkill weaponSkill) {
+
+    @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)
+    private List<Build> builds;
+
+
+    public Weapon(Character character, @NotNull(message = "Weapon name cannot be null") @NotBlank(message = "Weapon name cannot be blank") String name, Difficulties difficulty, @PositiveOrZero(message = "damage must be a positive value or zero") Integer damage, @PositiveOrZero(message = "support must be a positive value or zero") Integer support, @PositiveOrZero(message = "movement must be a positive value or zero") Integer movement, @PositiveOrZero(message = "crowdControl must be a positive value or zero") Integer crowdControl, @PositiveOrZero(message = "defense must be a positive value or zero") Integer defense, String icon, WeaponSkill weaponSkill, List<Build> builds) {
         this.character = character;
         this.name = name;
         this.difficulty = difficulty;
@@ -97,5 +104,6 @@ public class Weapon {
         this.defense = defense;
         this.icon = icon;
         this.weaponSkill = weaponSkill;
+        this.builds = builds;
     }
 }
