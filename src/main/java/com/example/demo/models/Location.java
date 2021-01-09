@@ -1,6 +1,5 @@
 package com.example.demo.models;
 
-import enums.SkillKeys;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
-import java.util.List;
 
 /**
  * objects
@@ -34,26 +31,22 @@ public class Location {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
-    /**
-     * The pos name
-     */
-    @NotNull(message = "Pos cannot be null")
-    @NotBlank(message = "Pos cannot be blank")
-    private String pos;
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private String slugMap;
 
-    /**
-     * The top
-     */
-    @Column(name = "topPos")
-    @PositiveOrZero(message = "top must be a positive value or zero")
-    private Integer top;
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private Integer topPos;
 
-    /**
-     * The left
-     */
-    @Column(name = "leftPos")
-    @PositiveOrZero(message = "left must be a positive value or zero")
-    private Integer left;
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private Integer leftPos;
+
+
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    private String description;
 
     /**
      * The build
@@ -65,11 +58,12 @@ public class Location {
     private Build build;
 
 
-    public Location(String name, String pos, Integer top, Integer left, Build build) {
+    public Location(@NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String map, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer topPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer leftPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String description, Build build) {
         this.name = name;
-        this.pos = pos;
-        this.top = top;
-        this.left = left;
+        this.slugMap = map;
+        this.topPos = topPos;
+        this.leftPos = leftPos;
+        this.description = description;
         this.build = build;
     }
 }

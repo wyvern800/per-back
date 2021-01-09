@@ -41,6 +41,17 @@ public class BuildController {
     }
 
     /**
+     * Represents the {@code GET} request
+     * @param weaponId The weapon Id
+     * @param buildId The build Id
+     * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
+     */
+    @RequestMapping(value = "/builds/view/{id}/build", method = RequestMethod.GET)
+    public ResponseEntity<Build> getCharInfo(@PathVariable(value = "id") long weaponId, @RequestParam(value="buildId") long buildId) {
+        return buildService.findBuildByWeaponIdAndBuildId(weaponId, buildId);
+    }
+
+    /**
      * Represents the {@code PUT} request
      * @param build The new build from the request present on the request body (format: {@code JSON})
      * @return The new character to be added

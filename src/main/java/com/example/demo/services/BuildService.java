@@ -111,6 +111,23 @@ public class BuildService {
         }
     }
 
+    public ResponseEntity<Build> findBuildByWeaponIdAndBuildId(long weaponId, long buildId) {
+        Optional<Weapon> optWeapon = weaponRepository.findById(weaponId);
+        if(optWeapon.isPresent()){
+            Optional<Build> optBuild = buildRepository.findById(buildId);
+            if (optBuild.isPresent()) {
+                Build theBuild = optBuild.get();
+                return new ResponseEntity<>(theBuild, HttpStatus.OK);
+            } else {
+                log.warn("Build was not found!");
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            log.warn("Build was not found!");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     /**
      * Gets the character info based on slug
      * @param slug The slug

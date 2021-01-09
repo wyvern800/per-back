@@ -26,10 +26,10 @@ public enum Locations {
     PRAIA(9, "map10", "Praia", 65, 9),
     FLORESTA(10, "map11", "Floresta", 63, 34),
     CEMITERIO(11, "map12", "Cemiterio", 66, 65),
-    BAIRRO_NOBRE(12, "map13", "Bairro Nobre", 0, 0),
-    CAPELA(13, "map14", "Capela", 0, 0),
-    FABRICA(14, "map15", "Fabrica", 0, 0),
-    DOCAS(15, "Map16", "Docas", 0, 0)
+    BAIRRO_NOBRE(12, "map13", "Bairro Nobre", 66, 65),
+    CAPELA(13, "map14", "Capela", 76, 53),
+    FABRICA(14, "map15", "Fabrica", 78, 76),
+    DOCAS(15, "Map16", "Docas", 86, 47)
     ;
 
     private final int id;

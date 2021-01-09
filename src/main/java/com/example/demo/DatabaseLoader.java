@@ -60,18 +60,29 @@ public class DatabaseLoader implements CommandLineRunner {
         weaponsList.add(adaga);
 
         Locations avenida = Locations.AVENIDA;
+        Locations laboratorio = Locations.LABORATORIO;
+        Locations templo = Locations.TEMPLO;
+        Locations bairro_nobre = Locations.BAIRRO_NOBRE;
 
-        Location location = new Location(avenida.getName(), avenida.getPos(), avenida.getTop(), avenida.getLeft(), null);
+        Location location = new Location(avenida.getName(),avenida.getPos(), 13, 42, "Um lugar dharoka", null);
+        Location location2 = new Location(laboratorio.getName(),laboratorio.getPos(), 48, 39, "Um lugar dharoka", null);
+        Location location3 = new Location(templo.getName(),templo.getPos(), 27, 79, "Um lugar dharoka", null);
+        Location location4 = new Location(bairro_nobre.getName(),bairro_nobre.getPos(), 27, 79, "Bairro dos rycos", null);
 
         List<Location> locsSet = new ArrayList<>();
 
         locsSet.add(location);
+        locsSet.addAll(Arrays.asList(location, location2, location3, location4));
 
         Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", locsSet, adaga);
 
         List<Build> builds = new ArrayList<>();
 
         location.setBuild(theBuild);
+        location2.setBuild(theBuild);
+        location3.setBuild(theBuild);
+        location4.setBuild(theBuild);
+
         builds.add(theBuild);
 
         adaga.setBuilds(builds);
