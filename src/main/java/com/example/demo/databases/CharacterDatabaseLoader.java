@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.databases;
 
 import com.example.demo.models.*;
 import com.example.demo.models.Character;
@@ -23,11 +23,11 @@ import java.util.*;
 
 
 @Component
-public class DatabaseLoader implements CommandLineRunner {
+public class CharacterDatabaseLoader implements CommandLineRunner {
     private final CharacterRepository characterRepository;
 
     @Autowired
-    public DatabaseLoader(CharacterRepository characterRepository) {
+    public CharacterDatabaseLoader(CharacterRepository characterRepository) {
         this.characterRepository = characterRepository;
     }
 
@@ -59,29 +59,24 @@ public class DatabaseLoader implements CommandLineRunner {
         // Add the weapons to the weapons list
         weaponsList.add(adaga);
 
-        Locations avenida = Locations.AVENIDA;
-        Locations laboratorio = Locations.LABORATORIO;
+        Locations beco = Locations.BECO;
+        Locations estande = Locations.BECO;
         Locations templo = Locations.TEMPLO;
-        Locations bairro_nobre = Locations.BAIRRO_NOBRE;
 
-        Location location = new Location(avenida.getName(),avenida.getPos(), 13, 42, "Um lugar dharoka", null);
-        Location location2 = new Location(laboratorio.getName(),laboratorio.getPos(), 48, 39, "Um lugar dharoka", null);
+        Location location = new Location(beco.getName(),beco.getPos(), 13, 42, "Um lugar dharoka", null);
+        Location location2 = new Location(estande.getName(),estande.getPos(), 48, 39, "Um lugar dharoka", null);
         Location location3 = new Location(templo.getName(),templo.getPos(), 27, 79, "Um lugar dharoka", null);
-        Location location4 = new Location(bairro_nobre.getName(),bairro_nobre.getPos(), 27, 79, "Bairro dos rycos", null);
 
         List<Location> locsSet = new ArrayList<>();
 
-        locsSet.add(location);
-        locsSet.addAll(Arrays.asList(location, location2, location3, location4));
+        locsSet.addAll(Arrays.asList(location, location3));
 
-        Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", locsSet, adaga);
+        Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", null, adaga);
 
         List<Build> builds = new ArrayList<>();
 
         location.setBuild(theBuild);
         location2.setBuild(theBuild);
-        location3.setBuild(theBuild);
-        location4.setBuild(theBuild);
 
         builds.add(theBuild);
 

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,7 @@ public class LocationService {
         }
     }
 
-    public ResponseEntity<Object> addLocationToBuild(long buildId, long locationId) {
+    public ResponseEntity<Location> addLocationToBuild(long buildId, long locationId) {
         Optional<Build> optBuild = buildRepository.findById(buildId);
         if (optBuild.isPresent()) {
             Optional<Location> optLocation = locationRepository.findById(locationId);
@@ -69,14 +70,19 @@ public class LocationService {
                 Build theBuild = optBuild.get();
                 Location theLocation = optLocation.get();
 
-                Location theNewLocation = new Location(theLocation.getName(), theLocation.getSlugMap(), theLocation.getTopPos(), theLocation.getLeftPos(), theLocation.getDescription(), theBuild);
+                List<Location> theNewLocationsList = new ArrayList<>(theBuild.getLocations());
 
-                theBuild.getLocations().add(theNewLocation);
+                theLocation.setBuild(theBuild);
+
+                theNewLocationsList.add(theLocation);
+
+                theBuild.setLocations(theNewLocationsList);
 
                 buildRepository.save(theBuild);
 
+
                 log.info("Location " + theLocation.getName() + " was added to build " + optBuild.get().getName() + " successfully!");
-                return new ResponseEntity<>(theBuild, HttpStatus.OK);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 log.warn("Location was not found!");
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);

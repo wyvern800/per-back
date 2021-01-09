@@ -70,7 +70,7 @@ public class LocationController {
      * @return The response | {@code HttpStatus.OK} if character is present & {@code HttpStatus.NOT_FOUND} if not present
      */
     @RequestMapping(value = "/locations/add/{buildId}", method =  RequestMethod.POST)
-    public ResponseEntity<Object> put2(@PathVariable(value = "buildId") long buildId, @RequestParam(value = "locationId") long locationId) {
+    public ResponseEntity<Location> put2(@PathVariable(value = "buildId") long buildId, @RequestParam(value = "locationId") long locationId) {
         return locationService.addLocationToBuild(buildId, locationId);
     }
 
