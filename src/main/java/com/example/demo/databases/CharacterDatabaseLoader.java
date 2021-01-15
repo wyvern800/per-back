@@ -63,20 +63,20 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
         Locations estande = Locations.BECO;
         Locations templo = Locations.TEMPLO;
 
-        Location location = new Location(beco.getName(),beco.getPos(), 13, 42, "Um lugar dharoka", null);
-        Location location2 = new Location(estande.getName(),estande.getPos(), 48, 39, "Um lugar dharoka", null);
-        Location location3 = new Location(templo.getName(),templo.getPos(), 27, 79, "Um lugar dharoka", null);
+        //Location location = new Location(beco.getName(),beco.getPos(), 13, 42, "Um lugar dharoka", null);
+        //Location location2 = new Location(estande.getName(),estande.getPos(), 48, 39, "Um lugar dharoka", null);
+        //Location location3 = new Location(templo.getName(),templo.getPos(), 27, 79, "Um lugar dharoka", null);
 
         List<Location> locsSet = new ArrayList<>();
 
-        locsSet.addAll(Arrays.asList(location, location3));
+        //locsSet.addAll(Arrays.asList(location, location3));
 
         Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", null, adaga);
 
         List<Build> builds = new ArrayList<>();
 
-        location.setBuild(theBuild);
-        location2.setBuild(theBuild);
+        //location.setBuild(theBuild);
+        //location2.setBuild(theBuild);
 
         builds.add(theBuild);
 

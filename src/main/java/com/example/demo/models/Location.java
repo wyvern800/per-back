@@ -3,6 +3,8 @@ package com.example.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,6 +28,8 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Integer displayOrder;
 
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "Name cannot be blank")
@@ -58,8 +62,9 @@ public class Location {
     private Build build;
 
 
-    public Location(@NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String map, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer topPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer leftPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String description, Build build) {
+    public Location(@NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name, Integer order, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String map, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer topPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") Integer leftPos, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String description, Build build) {
         this.name = name;
+        this.displayOrder = order;
         this.slugMap = map;
         this.topPos = topPos;
         this.leftPos = leftPos;

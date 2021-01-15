@@ -10,9 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * com.example.demo.services
@@ -129,6 +127,10 @@ public class LocationService {
         Optional<Build> optBuild = buildRepository.findById(buildId);
         if(optBuild.isPresent()){
             List<Location> locations = optBuild.get().getLocations();
+
+            // Order de display by order to show the real rotation
+            locations.sort(Comparator.comparing(Location::getDisplayOrder));
+
             return new ResponseEntity<>(locations, HttpStatus.OK);
         } else {
             log.warn("Build was not found!");
