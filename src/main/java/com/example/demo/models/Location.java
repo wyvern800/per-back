@@ -3,9 +3,6 @@ package com.example.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
