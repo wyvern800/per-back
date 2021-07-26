@@ -53,7 +53,7 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
         WeaponSkill twoskill = new WeaponSkill(dagger, "Parry", 0, 40.0, "https://i.imgur.com/qsToz4a.png");
         twohand.setWeaponSkill(twoskill);
 
-        WeaponSkill axeskill = new WeaponSkill(dagger, "Maleficent Hellx", 0, 40.0, "https://i.imgur.com/qsToz4a.png");
+        WeaponSkill axeskill = new WeaponSkill(dagger, "Maleficent Hellx", 0, 40.0, "https://i.imgur.com/bRk1fqK.png");
         axe.setWeaponSkill(axeskill);
 
         WeaponSkill dualswordskill = new WeaponSkill(dagger, "Dual Sword Rampage", 0, 40.0, "https://i.imgur.com/74a8D1v.png");
