@@ -73,7 +73,7 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
         skillsList.addAll(Arrays.asList(Q, W, E, R, PASSIVE));
 
         // Add the weapons to the weapons list
-        weaponsList.addAll(Arrays.asList(dagger, twohand, axe));
+        weaponsList.addAll(Arrays.asList(dagger, twohand, axe, dualsword));
 
         Locations beco = Locations.BECO;
         Locations estande = Locations.BECO;
