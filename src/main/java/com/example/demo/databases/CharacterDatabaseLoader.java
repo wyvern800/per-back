@@ -82,6 +82,10 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
 
         adaga.setBuilds(builds);
 
-        this.characterRepository.save(theCharacter);
+        List<Character> firstChar = characterRepository.findAll();
+
+        if (firstChar.size() <= 0) {
+            this.characterRepository.save(theCharacter);
+        }
     }
 }
