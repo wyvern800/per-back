@@ -87,11 +87,11 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
 
         //locsSet.addAll(Arrays.asList(location, location3));
 
-        Build theBuild = new Build("Crazy AP Jackie build", "Essa build é absurda e foca em AP", null, dagger);
+        Build theBuild = new Build("Crazy AP Jackie build", "Essa build é absurda e foca em AP", "1- Comece no meio do nada, faça isso, faça aquilo, etc etc, quando terminar mande um abraço para mim no twitter", null, dagger);
 
-        Build theBuild2 = new Build("Spell power meta", "Uma build feita para dands", null, dagger);
+        Build theBuild2 = new Build("Spell power meta", "Uma build feita para dands", "Começe no hospital -> Pegue teleporte -> Praia -> Beco, é isso", null, dagger);
 
-        Build theBuild3 = new Build("Crossing sword power", "Build para amassar players", null, twohand);
+        Build theBuild3 = new Build("Crossing sword power", "Build para amassar players", "Nada a declarar", null, twohand);
 
         //location.setBuild(theBuild);
         //location2.setBuild(theBuild);

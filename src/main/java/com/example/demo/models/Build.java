@@ -42,10 +42,13 @@ public class Build {
     @NotBlank(message = "Name cannot be blank")
     private String description;
 
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
+    @Column(length = 600)
+    private String bigDescription;
 
     @OneToMany(mappedBy = "build", cascade = CascadeType.ALL)
     private List<Location> locations;
-
 
     @ManyToOne
     @JoinColumn(name = "weapon", referencedColumnName = "id")
@@ -53,10 +56,11 @@ public class Build {
     private Weapon weapon;
 
 
-    public Build(@NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String description, List<Location> locations, Weapon weapon) {
+    public Build(@NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name, @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String description, String bigDescription, List<Location> locations, Weapon weapon) {
         this.name = name;
         this.slug = Slugfier.makeSlug(name);
         this.description = description;
+        this.bigDescription = bigDescription;
         this.locations = locations;
         this.weapon = weapon;
     }
