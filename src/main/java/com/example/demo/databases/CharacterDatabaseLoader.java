@@ -71,7 +71,7 @@ public class CharacterDatabaseLoader implements CommandLineRunner {
 
         //locsSet.addAll(Arrays.asList(location, location3));
 
-        Build theBuild = new Build("The way to malta", "Uma build feita para dharoks", null, adaga);
+        Build theBuild = new Build("Candance gamer", "Uma build feita para dands", null, adaga);
 
         List<Build> builds = new ArrayList<>();
 
